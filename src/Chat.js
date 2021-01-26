@@ -49,11 +49,11 @@ export default function Chat () {
         db.collection('rooms').doc(roomId).collection('messages').add({
             message: input,
             name: user.displayName,
+            uid: user.uid,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         setinput('');
     }
-
     return (
         <div className="chat">
             <div className="chat__header">
@@ -76,7 +76,7 @@ export default function Chat () {
             <div className="chat__body">
                 {messages.map(message => (
 
-                    <p key={message.id} className={`chat__message ${message.data.name === user.displayName && " chat__receiver"}`}>
+                    <p key={message.id} className={`chat__message ${message.data.uid === user.uid && " chat__receiver"}`}>
                         <span className={`chat__name`}>{message.data.name} </span>
                         { message.data.message}
                         < span className="chat__timestamp" > {new Date(message.data.timestamp?.toDate()).toUTCString()}</span>
