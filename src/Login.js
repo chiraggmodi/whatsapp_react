@@ -28,7 +28,7 @@ function Login () {
                     <h1>Sign in to Chat</h1>
                 </div>
 
-                <Button type="submit" onClick={signin}>Sing in With Google</Button>
+                <Button type="submit" onClick={signin}>Sign in With Google</Button>
             </div>
         </div>
     )

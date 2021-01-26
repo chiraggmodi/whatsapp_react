@@ -3,8 +3,8 @@ import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import AttachFile from "@material-ui/icons/AttachFile";
 import MoreVert from "@material-ui/icons/MoreVert";
-import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
-import MicIcon from '@material-ui/icons/Mic';
+// import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
+// import MicIcon from '@material-ui/icons/Mic';
 import { useParams } from "react-router-dom";
 import firebase from "firebase";
 
@@ -53,6 +53,7 @@ export default function Chat () {
         })
         setinput('');
     }
+
     return (
         <div className="chat">
             <div className="chat__header">
@@ -61,7 +62,7 @@ export default function Chat () {
                     <h3>{roomName}</h3>
                     <p>Last seen {" "}
                         {new Date(
-                            messages[messages.length - 1]?.timestamp?.toDate()
+                            messages[messages.length - 1]?.data.timestamp?.toDate()
                         ).toUTCString()}</p>
                 </div>
 
@@ -88,13 +89,13 @@ export default function Chat () {
             </div >
 
             <div className="chat__footer">
-                <InsertEmoticon />
+                {/* <InsertEmoticon /> */}
 
                 <form>
                     <input type="text" value={input} onChange={(e) => setinput(e.target.value)} placeholder="type message" />
                     <button type="submit" onClick={sendMessage}>Send Message</button>
                 </form>
-                <MicIcon />
+                {/* <MicIcon /> */}
             </div>
         </div >
     )
